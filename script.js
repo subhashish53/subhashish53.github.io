@@ -87,37 +87,29 @@ document.addEventListener('keydown', e => {
   }
 });
 
-// ── Contact form (Netlify) ─────────────────────────────────────────────────
+// ── Contact form (mailto — works on all static hosts) ─────────────────────
 const form = document.getElementById('contact-form');
 const status = document.getElementById('form-status');
 if (form) {
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const btn = form.querySelector('.btn-submit');
-    // Reset status from any previous attempt
-    status.className = 'form-status';
-    btn.textContent = 'Sending\u2026';
-    btn.disabled = true;
-    try {
-      const data = new FormData(form);
-      const res = await fetch(window.location.pathname, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(data).toString()
-      });
-      if (res.ok) {
-        status.textContent = '\u2714 Message sent \u2014 I\'ll be in touch shortly.';
-        status.className = 'form-status success';
-        form.reset();
-      } else {
-        throw new Error('Server error: ' + res.status);
-      }
-    } catch (err) {
-      status.textContent = '\u2718 Something went wrong. Please email me directly.';
-      status.className = 'form-status error';
-    } finally {
-      btn.textContent = 'Send Message \u25ba';
-      btn.disabled = false;
-    }
+    const name    = document.getElementById('contact-name').value.trim();
+    const email   = document.getElementById('contact-email').value.trim();
+    const message = document.getElementById('contact-message').value.trim();
+
+    const subject = encodeURIComponent('Portfolio Enquiry from ' + name);
+    const body    = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n\n' +
+      message
+    );
+
+    // Open the user\'s email client with fields pre-filled
+    window.location.href = 'mailto:subhashish53@gmail.com?subject=' + subject + '&body=' + body;
+
+    // Show confirmation
+    status.textContent = '\u2714 Your email client has opened \u2014 please send the message from there.';
+    status.className = 'form-status success';
+    form.reset();
   });
 }
