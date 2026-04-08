@@ -1,0 +1,39 @@
+# ─────────────────────────────────────────────
+#  Netlify Configuration — subhashish53.netlify.app
+#  Security hardened for free tier
+# ─────────────────────────────────────────────
+
+[build]
+  publish = "."
+
+# ── Security Headers (all pages) ─────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+
+    # Prevent clickjacking
+    X-Frame-Options = "DENY"
+
+    # Prevent MIME sniffing
+    X-Content-Type-Options = "nosniff"
+
+    # X-XSS-Protection intentionally omitted — deprecated in all modern browsers;
+    # can introduce vulnerabilities in old IE. CSP below handles XSS protection.
+
+    # Referrer policy
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+    # Permissions — interest-cohort kept for old browsers, browsing-topics for new
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=(), browsing-topics=()"
+
+    # HSTS: force HTTPS for 1 year across all subdomains
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+    # CSP: upgrade mixed content + allow Google Fonts + Netlify native forms
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+
+# ── Cache: PDF CV (30 days, revalidate) ───────
+[[headers]]
+  for = "/*.pdf"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, stale-while-revalidate=86400"

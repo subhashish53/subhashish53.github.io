@@ -1,0 +1,17 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor directories
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Netlify local dev
+.netlify/
+
+# Node (if ever added)
+node_modules/
+npm-debug.log*
