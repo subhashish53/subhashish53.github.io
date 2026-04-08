@@ -29,18 +29,19 @@ my-portfolio/
 │   ├── script.js
 │   └── Subhashish_Bhattacharya.pdf
 │
-├── netlify/                 ← Edit this for Netlify
+├── netlify/                 ← DRAG THIS FOLDER into Netlify portal
 │   ├── index.html
 │   ├── style.css
 │   ├── script.js
+│   ├── netlify.toml         ← Security headers config (must stay here)
 │   └── Subhashish_Bhattacharya.pdf
 │
 ├── docs/                    ← DO NOT EDIT (auto-synced from github/)
 │   └── (copy of github/)
 │
-├── netlify.toml             ← Netlify config (publish = "netlify")
 ├── .gitignore
-└── Portfolio_Management_Guide.md
+├── Portfolio_Management_Guide.md
+└── Portfolio_Management_Guide.docx
 ```
 
 ---
@@ -53,9 +54,10 @@ my-portfolio/
 - You **never edit `docs/` directly** — always edit `github/` then sync
 
 ### Netlify
-- Reads files from the `netlify/` folder (set in `netlify.toml`)
-- Deploys automatically within ~20 seconds of every `git push`
-- You edit `netlify/` for any Netlify-specific changes
+- Reads files from the `netlify/` folder (contains its own `netlify.toml`)
+- **To deploy: drag and drop the `netlify/` folder** into app.netlify.com → Deploys tab
+- The `netlify.toml` inside the folder applies security headers automatically
+- All files Netlify needs are self-contained inside `netlify/` — nothing else required
 
 ---
 
@@ -224,7 +226,7 @@ git push
 | Local folder | C:\Users\sbhattac\OneDrive - BMC Helix\Desktop\my-portfolio |
 | Default branch | main |
 | GitHub Pages source | /docs on main |
-| Netlify publish dir | netlify/ |
+| Netlify publish dir | drag-drop `netlify/` folder |
 
 ---
 

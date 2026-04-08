@@ -1,10 +1,12 @@
 # ─────────────────────────────────────────────
 #  Netlify Configuration — subhashish53.netlify.app
-#  Security hardened for free tier
+#  Place this file inside the netlify/ folder.
+#  When drag-dropping, drop the netlify/ folder
+#  and this file travels with it automatically.
 # ─────────────────────────────────────────────
 
-[build]
-  publish = "netlify"
+# No [build] publish needed — Netlify serves the
+# folder it was dropped into directly.
 
 # ── Security Headers (all pages) ─────────────
 [[headers]]
