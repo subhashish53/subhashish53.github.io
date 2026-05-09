@@ -193,7 +193,7 @@ Requires Netlify hosting. Messages appear in your Netlify dashboard under Forms.
 
 ## Quick Reference Commands
 
-Open PowerShell in `C:\Users\sbhattac\OneDrive - BMC Helix\Desktop\my-portfolio`
+Open PowerShell in `<repo-root>\my-portfolio`
 
 ```powershell
 # Sync github/ changes to docs/
@@ -223,7 +223,7 @@ git push
 | GitHub Repo | https://github.com/subhashish53/subhashish53.github.io |
 | GitHub Pages URL | https://subhashish53.github.io |
 | Netlify URL | https://subhashish53.netlify.app |
-| Local folder | C:\Users\sbhattac\OneDrive - BMC Helix\Desktop\my-portfolio |
+| Local folder | `<repo-root>\my-portfolio` |
 | Default branch | main |
 | GitHub Pages source | /docs on main |
 | Netlify publish dir | drag-drop `netlify/` folder |

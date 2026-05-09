@@ -32,7 +32,8 @@
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
 
     # CSP: upgrade mixed content + allow Google Fonts + Netlify native forms
-    Content-Security-Policy = "default-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+    # Note: 'unsafe-inline' intentionally omitted from script-src — site uses external script.js only.
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
 
 # ── Cache: PDF CV (30 days, revalidate) ───────
 [[headers]]
